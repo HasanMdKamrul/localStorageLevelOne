@@ -29,3 +29,57 @@ const removeName = ()=> removeItemFromLs('name');
 // ** remove age
 
 const removeAge = ()=> removeItemFromLs('age');
+
+// ** Store the userInfo as key-> userInfo:{'firstName':'Jhon','lastName':'Doe'}-> value
+
+// ** get the userInfo object like string if existed
+
+const getUserInfo = ()=>{
+    const userInfo = localStorage.getItem('user');
+    const userObject = JSON.parse(userInfo);
+
+    let userInfoObject = {};
+
+    userObject && (userInfoObject = userObject);
+
+    return userInfoObject;
+};
+
+// ** Set the key value as userInfo
+
+const userInfoHandler = ()=>{
+    // ** get the prior user info
+    const user = getUserInfo();
+
+    user['firstName'] = document.getElementById('first-name').value
+    user['lastName'] = document.getElementById('last-name').value
+
+    const {firstName,lastName} = user;
+
+    displayUser(firstName,lastName)
+
+    const userStringyfied = JSON.stringify(user)
+
+    localStorage.setItem('user',userStringyfied)
+};
+
+// userInfoHandler();
+
+// ** display user 
+
+const displayUser = (firstName,lastName)=>{
+    document.getElementById('display-user').innerText = `${firstName} ${lastName}`
+}
+
+// ** Display user from localStorage
+
+const displayUserInfo = ()=>{
+    const getUser = getUserInfo();
+    // console.log(getUser)
+    const {firstName,lastName} = getUser;
+
+    document.getElementById('display-user').innerText = `${firstName ? firstName : "N/A"} ${lastName ? lastName : "N/A"}`
+
+};
+
+displayUserInfo()

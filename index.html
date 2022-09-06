@@ -7,6 +7,13 @@
     <title>LocalStorageLevelOne</title>
   </head>
   <body>
+    <!-- User Info Field -->
+    <section>
+      <input id="first-name" type="text" placeholder="firstName" />
+      <input id="last-name" type="text" placeholder="lastName" />
+      <button onclick="userInfoHandler()">Add the user info to LS</button>
+      <p id="display-user"></p>
+    </section>
     <section>
       <button onclick="addAge()">Add Age</button>
       <button onclick="addName()">Add Name</button>
